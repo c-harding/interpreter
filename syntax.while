@@ -1,0 +1,32 @@
+x = 4;
+var y = 12;
+x += y;
+y -= x;
+x *= 17;
+{
+    var x = 14;
+    x[17] = 3;
+}
+if x == 14 do error();
+if true then
+    x += 17;
+else
+    x -= 21;
+
+if true then {
+    x += 17;
+} else {
+    x -= 21;
+}
+
+if false then {
+    x += 17;
+} else if $ > 0 then repeat {
+    x += 17;
+} while false;
+else {
+    x = x - 21;
+}
+$ = 2;
+$[0] = x;
+$[1] = y;
