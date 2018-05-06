@@ -1,6 +1,10 @@
 # While language
 
-*Charlie Harding, April 2018*
+*Charlie Harding, Spring 2018*
+
+<p align="right">
+    <em><a href="https://xsanda.github.io/interpreter/">Documentation</a></em>
+</p>
 
 This project started out based on the While language specified in [Semantics with Applications](https://dl.acm.org/citation.cfm?id=129085), with the addition of procedures, blocks and arrays. It uses variable scoping by means of a list of maps, where each map is from string to integer, so from variable to value. Procedures are dealt with in the same way. Variables are created globally, unless they are defined as `var` at the head of a block. The innermost copy of a variable is always accessed and modified, and there is no access to outer, shadowed copies. Procedures are always created locally, even if this shadows another procedure with the same name. Their scope is given by the define-site not the call-site, so the only local variables accessible are those existing at the point it is defined, plus their arguments.
 
