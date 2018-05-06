@@ -1,48 +1,830 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Parser.Result</span><span> </span><span class="hs-special">(</span><span>
-</span><a name="line-2"></a><span>  </span><a href="Parser.Result.html#SingleResult"><span class="hs-identifier hs-type">SingleResult</span></a><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
-</span><a name="line-3"></a><span>  </span><a href="Parser.Result.html#ListResult"><span class="hs-identifier hs-type">ListResult</span></a><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span class="hs-special">,</span><span>
-</span><a name="line-4"></a><span>  </span><a href="Parser.Result.html#Results"><span class="hs-identifier hs-type">Results</span></a><span class="hs-special">,</span><span>
-</span><a name="line-5"></a><span>  </span><a href="Parser.Result.html#results"><span class="hs-identifier hs-var">results</span></a><span class="hs-special">,</span><span>
-</span><a name="line-6"></a><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
-</span><a name="line-7"></a><span>
-</span><a name="line-8"></a><span class="hs-keyword">import</span><span>            </span><span class="hs-identifier">Data.Maybe</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">catMaybes</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">isNothing</span><span class="hs-special">)</span><span>
-</span><a name="line-9"></a><span class="hs-keyword">import</span><span>            </span><a href="Parser.Types.html"><span class="hs-identifier">Parser.Types</span></a><span>
-</span><a name="line-10"></a><span>
-</span><a name="line-11"></a><span class="hs-comment">-- | The result of a possibly partial parse, where only the first successful</span><span>
-</span><a name="line-12"></a><span class="hs-comment">-- parse is given, if present.</span><span>
-</span><a name="line-13"></a><span class="hs-keyword">data</span><span> </span><a name="SingleResult"><a href="Parser.Result.html#SingleResult"><span class="hs-identifier">SingleResult</span></a></a><span> </span><a name="local-6989586621679016037"><a href="#local-6989586621679016037"><span class="hs-identifier">a</span></a></a><span>
-</span><a name="line-14"></a><span>  </span><span class="hs-comment">-- | The result is not a valid parse, but it is a prefix of a valid parse.</span><span>
-</span><a name="line-15"></a><span>  </span><span class="hs-glyph">=</span><span> </span><a name="SIncomplete"><a href="Parser.Result.html#SIncomplete"><span class="hs-identifier">SIncomplete</span></a></a><span>
-</span><a name="line-16"></a><span>  </span><span class="hs-comment">-- | The parse was successful, and the first successful parse is given.</span><span>
-</span><a name="line-17"></a><span>  </span><span class="hs-glyph">|</span><span> </span><a name="SParsed"><a href="Parser.Result.html#SParsed"><span class="hs-identifier">SParsed</span></a></a><span> </span><a href="#local-6989586621679016037"><span class="hs-identifier hs-type">a</span></a><span>
-</span><a name="line-18"></a><span>  </span><span class="hs-comment">-- | The result is not a valid parse.</span><span>
-</span><a name="line-19"></a><span>  </span><span class="hs-glyph">|</span><span> </span><a name="SFailed"><a href="Parser.Result.html#SFailed"><span class="hs-identifier">SFailed</span></a></a><span>
-</span><a name="line-20"></a><span>  </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-identifier hs-type">Show</span><span>
-</span><a name="line-21"></a><span>
-</span><a name="line-22"></a><span class="hs-comment">-- | The result of a possibly partial parse, where every successful parse is</span><span>
-</span><a name="line-23"></a><span class="hs-comment">-- given, if present.</span><span>
-</span><a name="line-24"></a><span class="hs-keyword">data</span><span> </span><a name="ListResult"><a href="Parser.Result.html#ListResult"><span class="hs-identifier">ListResult</span></a></a><span> </span><a name="local-6989586621679015166"><a href="#local-6989586621679015166"><span class="hs-identifier">a</span></a></a><span>
-</span><a name="line-25"></a><span>  </span><span class="hs-comment">-- | The result is not a valid parse, but it is a prefix of a valid parse.</span><span>
-</span><a name="line-26"></a><span>  </span><span class="hs-glyph">=</span><span> </span><a name="LIncomplete"><a href="Parser.Result.html#LIncomplete"><span class="hs-identifier">LIncomplete</span></a></a><span>
-</span><a name="line-27"></a><span>  </span><span class="hs-comment">-- | The parse was successful, and every successful parse is given in a</span><span>
-</span><a name="line-28"></a><span>  </span><span class="hs-comment">-- list.</span><span>
-</span><a name="line-29"></a><span>  </span><span class="hs-glyph">|</span><span> </span><a name="LParsed"><a href="Parser.Result.html#LParsed"><span class="hs-identifier">LParsed</span></a></a><span> </span><span class="hs-special">[</span><a href="#local-6989586621679015166"><span class="hs-identifier hs-type">a</span></a><span class="hs-special">]</span><span>
-</span><a name="line-30"></a><span>  </span><span class="hs-comment">-- | The result is not a valid parse.</span><span>
-</span><a name="line-31"></a><span>  </span><span class="hs-glyph">|</span><span> </span><a name="LFailed"><a href="Parser.Result.html#LFailed"><span class="hs-identifier">LFailed</span></a></a><span> </span><span class="hs-keyword">deriving</span><span> </span><span class="hs-identifier hs-type">Show</span><span>
-</span><a name="line-32"></a><span>
-</span><a name="line-33"></a><span class="hs-comment">-- | A typeclass for all the ways to receive the result of a partial parse.</span><span>
-</span><a name="line-34"></a><span class="hs-keyword">class</span><span> </span><a name="Results"><a href="Parser.Result.html#Results"><span class="hs-identifier">Results</span></a></a><span> </span><a name="local-6989586621679015164"><a href="#local-6989586621679015164"><span class="hs-identifier">r</span></a></a><span> </span><span class="hs-keyword">where</span><span>
-</span><a name="line-35"></a><span>  </span><span class="hs-comment">-- | Produce a result of a partial parse.</span><span>
-</span><a name="line-36"></a><span>  </span><span class="hs-identifier">results</span><span> </span><span class="hs-glyph">::</span><span> </span><a href="Parser.Types.html#Parses"><span class="hs-identifier hs-type">Parses</span></a><span> </span><a href="#local-6989586621679015165"><span class="hs-identifier hs-type">a</span></a><span> </span><span class="hs-glyph">-&gt;</span><span> </span><a href="#local-6989586621679015164"><span class="hs-identifier hs-type">r</span></a><span> </span><a href="#local-6989586621679015165"><span class="hs-identifier hs-type">a</span></a><span>
-</span><a name="line-37"></a><span>
-</span><a name="line-38"></a><span class="hs-keyword">instance</span><span> </span><a href="Parser.Result.html#Results"><span class="hs-identifier hs-type">Results</span></a><span> </span><a href="Parser.Result.html#ListResult"><span class="hs-identifier hs-type">ListResult</span></a><span> </span><span class="hs-keyword">where</span><span>
-</span><a name="line-39"></a><span>  </span><a name="local-8214565720323790066"><a href="Parser.Result.html#results"><span class="hs-identifier">results</span></a></a><span> </span><a name="local-6989586621679016040"><a href="#local-6989586621679016040"><span class="hs-identifier">xs</span></a></a><span>
-</span><a name="line-40"></a><span>    </span><span class="hs-glyph">|</span><span> </span><span class="hs-identifier hs-var">null</span><span> </span><a href="#local-6989586621679016040"><span class="hs-identifier hs-var">xs</span></a><span>          </span><span class="hs-glyph">=</span><span> </span><a href="Parser.Result.html#LFailed"><span class="hs-identifier hs-var">LFailed</span></a><span>
-</span><a name="line-41"></a><span>    </span><span class="hs-glyph">|</span><span> </span><span class="hs-identifier hs-var">all</span><span> </span><span class="hs-identifier hs-var">isNothing</span><span> </span><a href="#local-6989586621679016040"><span class="hs-identifier hs-var">xs</span></a><span> </span><span class="hs-glyph">=</span><span> </span><a href="Parser.Result.html#LIncomplete"><span class="hs-identifier hs-var">LIncomplete</span></a><span>
-</span><a name="line-42"></a><span>    </span><span class="hs-glyph">|</span><span> </span><span class="hs-identifier hs-var">otherwise</span><span>        </span><span class="hs-glyph">=</span><span> </span><a href="Parser.Result.html#LParsed"><span class="hs-identifier hs-var">LParsed</span></a><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">snd</span><span> </span><span class="hs-operator hs-var">&lt;$&gt;</span><span> </span><span class="hs-identifier hs-var">catMaybes</span><span> </span><a href="#local-6989586621679016040"><span class="hs-identifier hs-var">xs</span></a><span class="hs-special">)</span><span>
-</span><a name="line-43"></a><span>
-</span><a name="line-44"></a><span class="hs-keyword">instance</span><span> </span><a href="Parser.Result.html#Results"><span class="hs-identifier hs-type">Results</span></a><span> </span><a href="Parser.Result.html#SingleResult"><span class="hs-identifier hs-type">SingleResult</span></a><span> </span><span class="hs-keyword">where</span><span>
-</span><a name="line-45"></a><span>  </span><a name="local-8214565720323790066"><a href="Parser.Result.html#results"><span class="hs-identifier">results</span></a></a><span> </span><a name="local-6989586621679016038"><a href="#local-6989586621679016038"><span class="hs-identifier">xs</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><span class="hs-keyword">case</span><span> </span><a href="Parser.Result.html#results"><span class="hs-identifier hs-var">results</span></a><span> </span><a href="#local-6989586621679016038"><span class="hs-identifier hs-var">xs</span></a><span> </span><span class="hs-keyword">of</span><span>
-</span><a name="line-46"></a><span>    </span><a href="Parser.Result.html#LFailed"><span class="hs-identifier hs-var">LFailed</span></a><span> </span><span class="hs-glyph">-&gt;</span><span> </span><a href="Parser.Result.html#SFailed"><span class="hs-identifier hs-var">SFailed</span></a><span>
-</span><a name="line-47"></a><span>    </span><a href="Parser.Result.html#LIncomplete"><span class="hs-identifier hs-var">LIncomplete</span></a><span> </span><span class="hs-glyph">-&gt;</span><span> </span><a href="Parser.Result.html#SIncomplete"><span class="hs-identifier hs-var">SIncomplete</span></a><span>
-</span><a name="line-48"></a><span>    </span><a href="Parser.Result.html#LParsed"><span class="hs-identifier hs-var">LParsed</span></a><span> </span><span class="hs-special">(</span><a name="local-6989586621679016039"><a href="#local-6989586621679016039"><span class="hs-identifier">xs</span></a></a><span class="hs-glyph">:</span><span class="hs-identifier">_</span><span class="hs-special">)</span><span> </span><span class="hs-glyph">-&gt;</span><span> </span><a href="Parser.Result.html#SParsed"><span class="hs-identifier hs-var">SParsed</span></a><span> </span><a href="#local-6989586621679016039"><span class="hs-identifier hs-var">xs</span></a></pre></body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><link rel="stylesheet" type="text/css" href="style.css"
+     /><script type="text/javascript" src="highlight.js"
+    ></script
+    ></head
+  ><body
+  ><pre
+    ><span class="hs-keyword"
+      >module</span
+      ><span
+      > </span
+      ><span class="hs-identifier"
+      >Parser.Result</span
+      ><span
+      > </span
+      ><span class="hs-special"
+      >(</span
+      ><span
+      >
+</span
+      ><a name="line-2"
+      ></a
+      ><span
+      >  </span
+      ><a href="Parser.Result.html#SingleResult"
+      ><span class="hs-identifier hs-type"
+	>SingleResult</span
+	></a
+      ><span class="hs-special"
+      >(</span
+      ><span class="hs-glyph"
+      >..</span
+      ><span class="hs-special"
+      >)</span
+      ><span class="hs-special"
+      >,</span
+      ><span
+      >
+</span
+      ><a name="line-3"
+      ></a
+      ><span
+      >  </span
+      ><a href="Parser.Result.html#ListResult"
+      ><span class="hs-identifier hs-type"
+	>ListResult</span
+	></a
+      ><span class="hs-special"
+      >(</span
+      ><span class="hs-glyph"
+      >..</span
+      ><span class="hs-special"
+      >)</span
+      ><span class="hs-special"
+      >,</span
+      ><span
+      >
+</span
+      ><a name="line-4"
+      ></a
+      ><span
+      >  </span
+      ><a href="Parser.Result.html#Results"
+      ><span class="hs-identifier hs-type"
+	>Results</span
+	></a
+      ><span class="hs-special"
+      >,</span
+      ><span
+      >
+</span
+      ><a name="line-5"
+      ></a
+      ><span
+      >  </span
+      ><a href="Parser.Result.html#results"
+      ><span class="hs-identifier hs-var"
+	>results</span
+	></a
+      ><span class="hs-special"
+      >,</span
+      ><span
+      >
+</span
+      ><a name="line-6"
+      ></a
+      ><span class="hs-special"
+      >)</span
+      ><span
+      > </span
+      ><span class="hs-keyword"
+      >where</span
+      ><span
+      >
+</span
+      ><a name="line-7"
+      ></a
+      ><span
+      >
+</span
+      ><a name="line-8"
+      ></a
+      ><span class="hs-keyword"
+      >import</span
+      ><span
+      >            </span
+      ><span class="hs-identifier"
+      >Data.Maybe</span
+      ><span
+      > </span
+      ><span class="hs-special"
+      >(</span
+      ><span class="hs-identifier hs-var"
+      >catMaybes</span
+      ><span class="hs-special"
+      >,</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-var"
+      >isNothing</span
+      ><span class="hs-special"
+      >)</span
+      ><span
+      >
+</span
+      ><a name="line-9"
+      ></a
+      ><span class="hs-keyword"
+      >import</span
+      ><span
+      >            </span
+      ><a href="Parser.Types.html"
+      ><span class="hs-identifier"
+	>Parser.Types</span
+	></a
+      ><span
+      >
+</span
+      ><a name="line-10"
+      ></a
+      ><span
+      >
+</span
+      ><a name="line-11"
+      ></a
+      ><span class="hs-comment"
+      >-- | The result of a possibly partial parse, where only the first successful</span
+      ><span
+      >
+</span
+      ><a name="line-12"
+      ></a
+      ><span class="hs-comment"
+      >-- parse is given, if present.</span
+      ><span
+      >
+</span
+      ><a name="line-13"
+      ></a
+      ><span class="hs-keyword"
+      >data</span
+      ><span
+      > </span
+      ><a name="SingleResult"
+      ><a href="Parser.Result.html#SingleResult"
+	><span class="hs-identifier"
+	  >SingleResult</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><a name="local-6989586621679016037"
+      ><a href="#local-6989586621679016037"
+	><span class="hs-identifier"
+	  >a</span
+	  ></a
+	></a
+      ><span
+      >
+</span
+      ><a name="line-14"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- | The result is not a valid parse, but it is a prefix of a valid parse.</span
+      ><span
+      >
+</span
+      ><a name="line-15"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-glyph"
+      >=</span
+      ><span
+      > </span
+      ><a name="SIncomplete"
+      ><a href="Parser.Result.html#SIncomplete"
+	><span class="hs-identifier"
+	  >SIncomplete</span
+	  ></a
+	></a
+      ><span
+      >
+</span
+      ><a name="line-16"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- | The parse was successful, and the first successful parse is given.</span
+      ><span
+      >
+</span
+      ><a name="line-17"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-glyph"
+      >|</span
+      ><span
+      > </span
+      ><a name="SParsed"
+      ><a href="Parser.Result.html#SParsed"
+	><span class="hs-identifier"
+	  >SParsed</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><a href="#local-6989586621679016037"
+      ><span class="hs-identifier hs-type"
+	>a</span
+	></a
+      ><span
+      >
+</span
+      ><a name="line-18"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- | The result is not a valid parse.</span
+      ><span
+      >
+</span
+      ><a name="line-19"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-glyph"
+      >|</span
+      ><span
+      > </span
+      ><a name="SFailed"
+      ><a href="Parser.Result.html#SFailed"
+	><span class="hs-identifier"
+	  >SFailed</span
+	  ></a
+	></a
+      ><span
+      >
+</span
+      ><a name="line-20"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-keyword"
+      >deriving</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-type"
+      >Show</span
+      ><span
+      >
+</span
+      ><a name="line-21"
+      ></a
+      ><span
+      >
+</span
+      ><a name="line-22"
+      ></a
+      ><span class="hs-comment"
+      >-- | The result of a possibly partial parse, where every successful parse is</span
+      ><span
+      >
+</span
+      ><a name="line-23"
+      ></a
+      ><span class="hs-comment"
+      >-- given, if present.</span
+      ><span
+      >
+</span
+      ><a name="line-24"
+      ></a
+      ><span class="hs-keyword"
+      >data</span
+      ><span
+      > </span
+      ><a name="ListResult"
+      ><a href="Parser.Result.html#ListResult"
+	><span class="hs-identifier"
+	  >ListResult</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><a name="local-6989586621679015166"
+      ><a href="#local-6989586621679015166"
+	><span class="hs-identifier"
+	  >a</span
+	  ></a
+	></a
+      ><span
+      >
+</span
+      ><a name="line-25"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- | The result is not a valid parse, but it is a prefix of a valid parse.</span
+      ><span
+      >
+</span
+      ><a name="line-26"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-glyph"
+      >=</span
+      ><span
+      > </span
+      ><a name="LIncomplete"
+      ><a href="Parser.Result.html#LIncomplete"
+	><span class="hs-identifier"
+	  >LIncomplete</span
+	  ></a
+	></a
+      ><span
+      >
+</span
+      ><a name="line-27"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- | The parse was successful, and every successful parse is given in a</span
+      ><span
+      >
+</span
+      ><a name="line-28"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- list.</span
+      ><span
+      >
+</span
+      ><a name="line-29"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-glyph"
+      >|</span
+      ><span
+      > </span
+      ><a name="LParsed"
+      ><a href="Parser.Result.html#LParsed"
+	><span class="hs-identifier"
+	  >LParsed</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><span class="hs-special"
+      >[</span
+      ><a href="#local-6989586621679015166"
+      ><span class="hs-identifier hs-type"
+	>a</span
+	></a
+      ><span class="hs-special"
+      >]</span
+      ><span
+      >
+</span
+      ><a name="line-30"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- | The result is not a valid parse.</span
+      ><span
+      >
+</span
+      ><a name="line-31"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-glyph"
+      >|</span
+      ><span
+      > </span
+      ><a name="LFailed"
+      ><a href="Parser.Result.html#LFailed"
+	><span class="hs-identifier"
+	  >LFailed</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><span class="hs-keyword"
+      >deriving</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-type"
+      >Show</span
+      ><span
+      >
+</span
+      ><a name="line-32"
+      ></a
+      ><span
+      >
+</span
+      ><a name="line-33"
+      ></a
+      ><span class="hs-comment"
+      >-- | A typeclass for all the ways to receive the result of a partial parse.</span
+      ><span
+      >
+</span
+      ><a name="line-34"
+      ></a
+      ><span class="hs-keyword"
+      >class</span
+      ><span
+      > </span
+      ><a name="Results"
+      ><a href="Parser.Result.html#Results"
+	><span class="hs-identifier"
+	  >Results</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><a name="local-6989586621679015164"
+      ><a href="#local-6989586621679015164"
+	><span class="hs-identifier"
+	  >r</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><span class="hs-keyword"
+      >where</span
+      ><span
+      >
+</span
+      ><a name="line-35"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-comment"
+      >-- | Produce a result of a partial parse.</span
+      ><span
+      >
+</span
+      ><a name="line-36"
+      ></a
+      ><span
+      >  </span
+      ><span class="hs-identifier"
+      >results</span
+      ><span
+      > </span
+      ><span class="hs-glyph"
+      >::</span
+      ><span
+      > </span
+      ><a href="Parser.Types.html#Parses"
+      ><span class="hs-identifier hs-type"
+	>Parses</span
+	></a
+      ><span
+      > </span
+      ><a href="#local-6989586621679015165"
+      ><span class="hs-identifier hs-type"
+	>a</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-glyph"
+      >-&gt;</span
+      ><span
+      > </span
+      ><a href="#local-6989586621679015164"
+      ><span class="hs-identifier hs-type"
+	>r</span
+	></a
+      ><span
+      > </span
+      ><a href="#local-6989586621679015165"
+      ><span class="hs-identifier hs-type"
+	>a</span
+	></a
+      ><span
+      >
+</span
+      ><a name="line-37"
+      ></a
+      ><span
+      >
+</span
+      ><a name="line-38"
+      ></a
+      ><span class="hs-keyword"
+      >instance</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#Results"
+      ><span class="hs-identifier hs-type"
+	>Results</span
+	></a
+      ><span
+      > </span
+      ><a href="Parser.Result.html#ListResult"
+      ><span class="hs-identifier hs-type"
+	>ListResult</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-keyword"
+      >where</span
+      ><span
+      >
+</span
+      ><a name="line-39"
+      ></a
+      ><span
+      >  </span
+      ><a name="local-8214565720323790066"
+      ><a href="Parser.Result.html#results"
+	><span class="hs-identifier"
+	  >results</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><a name="local-6989586621679016040"
+      ><a href="#local-6989586621679016040"
+	><span class="hs-identifier"
+	  >xs</span
+	  ></a
+	></a
+      ><span
+      >
+</span
+      ><a name="line-40"
+      ></a
+      ><span
+      >    </span
+      ><span class="hs-glyph"
+      >|</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-var"
+      >null</span
+      ><span
+      > </span
+      ><a href="#local-6989586621679016040"
+      ><span class="hs-identifier hs-var"
+	>xs</span
+	></a
+      ><span
+      >          </span
+      ><span class="hs-glyph"
+      >=</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#LFailed"
+      ><span class="hs-identifier hs-var"
+	>LFailed</span
+	></a
+      ><span
+      >
+</span
+      ><a name="line-41"
+      ></a
+      ><span
+      >    </span
+      ><span class="hs-glyph"
+      >|</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-var"
+      >all</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-var"
+      >isNothing</span
+      ><span
+      > </span
+      ><a href="#local-6989586621679016040"
+      ><span class="hs-identifier hs-var"
+	>xs</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-glyph"
+      >=</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#LIncomplete"
+      ><span class="hs-identifier hs-var"
+	>LIncomplete</span
+	></a
+      ><span
+      >
+</span
+      ><a name="line-42"
+      ></a
+      ><span
+      >    </span
+      ><span class="hs-glyph"
+      >|</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-var"
+      >otherwise</span
+      ><span
+      >        </span
+      ><span class="hs-glyph"
+      >=</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#LParsed"
+      ><span class="hs-identifier hs-var"
+	>LParsed</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-special"
+      >(</span
+      ><span class="hs-identifier hs-var"
+      >snd</span
+      ><span
+      > </span
+      ><span class="hs-operator hs-var"
+      >&lt;$&gt;</span
+      ><span
+      > </span
+      ><span class="hs-identifier hs-var"
+      >catMaybes</span
+      ><span
+      > </span
+      ><a href="#local-6989586621679016040"
+      ><span class="hs-identifier hs-var"
+	>xs</span
+	></a
+      ><span class="hs-special"
+      >)</span
+      ><span
+      >
+</span
+      ><a name="line-43"
+      ></a
+      ><span
+      >
+</span
+      ><a name="line-44"
+      ></a
+      ><span class="hs-keyword"
+      >instance</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#Results"
+      ><span class="hs-identifier hs-type"
+	>Results</span
+	></a
+      ><span
+      > </span
+      ><a href="Parser.Result.html#SingleResult"
+      ><span class="hs-identifier hs-type"
+	>SingleResult</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-keyword"
+      >where</span
+      ><span
+      >
+</span
+      ><a name="line-45"
+      ></a
+      ><span
+      >  </span
+      ><a name="local-8214565720323790066"
+      ><a href="Parser.Result.html#results"
+	><span class="hs-identifier"
+	  >results</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><a name="local-6989586621679016038"
+      ><a href="#local-6989586621679016038"
+	><span class="hs-identifier"
+	  >xs</span
+	  ></a
+	></a
+      ><span
+      > </span
+      ><span class="hs-glyph"
+      >=</span
+      ><span
+      > </span
+      ><span class="hs-keyword"
+      >case</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#results"
+      ><span class="hs-identifier hs-var"
+	>results</span
+	></a
+      ><span
+      > </span
+      ><a href="#local-6989586621679016038"
+      ><span class="hs-identifier hs-var"
+	>xs</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-keyword"
+      >of</span
+      ><span
+      >
+</span
+      ><a name="line-46"
+      ></a
+      ><span
+      >    </span
+      ><a href="Parser.Result.html#LFailed"
+      ><span class="hs-identifier hs-var"
+	>LFailed</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-glyph"
+      >-&gt;</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#SFailed"
+      ><span class="hs-identifier hs-var"
+	>SFailed</span
+	></a
+      ><span
+      >
+</span
+      ><a name="line-47"
+      ></a
+      ><span
+      >    </span
+      ><a href="Parser.Result.html#LIncomplete"
+      ><span class="hs-identifier hs-var"
+	>LIncomplete</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-glyph"
+      >-&gt;</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#SIncomplete"
+      ><span class="hs-identifier hs-var"
+	>SIncomplete</span
+	></a
+      ><span
+      >
+</span
+      ><a name="line-48"
+      ></a
+      ><span
+      >    </span
+      ><a href="Parser.Result.html#LParsed"
+      ><span class="hs-identifier hs-var"
+	>LParsed</span
+	></a
+      ><span
+      > </span
+      ><span class="hs-special"
+      >(</span
+      ><a name="local-6989586621679016039"
+      ><a href="#local-6989586621679016039"
+	><span class="hs-identifier"
+	  >xs</span
+	  ></a
+	></a
+      ><span class="hs-glyph"
+      >:</span
+      ><span class="hs-identifier"
+      >_</span
+      ><span class="hs-special"
+      >)</span
+      ><span
+      > </span
+      ><span class="hs-glyph"
+      >-&gt;</span
+      ><span
+      > </span
+      ><a href="Parser.Result.html#SParsed"
+      ><span class="hs-identifier hs-var"
+	>SParsed</span
+	></a
+      ><span
+      > </span
+      ><a href="#local-6989586621679016039"
+      ><span class="hs-identifier hs-var"
+	>xs</span
+	></a
+      ></pre
+    ></body
+  ></html
+>

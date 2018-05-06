@@ -1,1 +1,1765 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>While</title><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean" /><link rel="stylesheet" type="text/css" href="quick-jump.css" /><script src="haddock-bundle.min.js" async="async" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script></head><body><div id="package-header"><ul class="links" id="page-menu"><li><a href="src/While.html">Source</a></li><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul><p class="caption empty">&nbsp;</p></div><div id="content"><div id="module-header"><table class="info"><tr><th>Safe Haskell</th><td>Safe</td></tr></table><p class="caption">While</p></div><div id="interface"><h1>Documentation</h1><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:LVal" class="def">LVal</a> <a href="src/While.html#LVal" class="link">Source</a> <a href="#t:LVal" class="selflink">#</a></p><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a id="v:Arr" class="def">Arr</a> <a href="While.html#t:LVal" title="While">LVal</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:Var" class="def">Var</a> <a href="While.html#t:Var" title="While">Var</a></td><td class="doc empty">&nbsp;</td></tr></table></div><div class="subs instances"><details id="i:LVal" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:LVal:Show:1"></span> Show <a href="While.html#t:LVal" title="While">LVal</a></span> <a href="src/While.html#line-26" class="link">Source</a> <a href="#t:LVal" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:LVal:Show:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="While.html#t:LVal" title="While">LVal</a> -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="While.html#t:LVal" title="While">LVal</a> -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="While.html#t:LVal" title="While">LVal</a>] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:Aexp" class="def">Aexp</a> <a href="src/While.html#Aexp" class="link">Source</a> <a href="#t:Aexp" class="selflink">#</a></p><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a id="v:Num" class="def">Num</a> Int</td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:LVal" class="def">LVal</a> <a href="While.html#t:LVal" title="While">LVal</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Aexp" title="While">Aexp</a> <a id="v::-43-:" class="def">:+:</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Aexp" title="While">Aexp</a> <a id="v::-42-:" class="def">:*:</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Aexp" title="While">Aexp</a> <a id="v::-45-:" class="def">:-:</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr></table></div><div class="subs instances"><details id="i:Aexp" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Aexp:Show:1"></span> Show <a href="While.html#t:Aexp" title="While">Aexp</a></span> <a href="src/While.html#line-34" class="link">Source</a> <a href="#t:Aexp" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:Aexp:Show:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="While.html#t:Aexp" title="While">Aexp</a>] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:Bexp" class="def">Bexp</a> <a href="src/While.html#Bexp" class="link">Source</a> <a href="#t:Bexp" class="selflink">#</a></p><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a id="v:T" class="def">T</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:F" class="def">F</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Aexp" title="While">Aexp</a> <a id="v::-61-:" class="def">:=:</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Aexp" title="While">Aexp</a> <a id="v::-60-:" class="def">:&lt;:</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Aexp" title="While">Aexp</a> <a id="v::-62-:" class="def">:&gt;:</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Bexp" title="While">Bexp</a> <a id="v::-38-:" class="def">:&amp;:</a> <a href="While.html#t:Bexp" title="While">Bexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:Not" class="def">Not</a> <a href="While.html#t:Bexp" title="While">Bexp</a></td><td class="doc empty">&nbsp;</td></tr></table></div><div class="subs instances"><details id="i:Bexp" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Bexp:Show:1"></span> Show <a href="While.html#t:Bexp" title="While">Bexp</a></span> <a href="src/While.html#line-44" class="link">Source</a> <a href="#t:Bexp" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:Bexp:Show:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="While.html#t:Bexp" title="While">Bexp</a> -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="While.html#t:Bexp" title="While">Bexp</a> -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="While.html#t:Bexp" title="While">Bexp</a>] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><span class="keyword">type</span> <a id="t:Var" class="def">Var</a> = String <a href="src/While.html#Var" class="link">Source</a> <a href="#t:Var" class="selflink">#</a></p></div><div class="top"><p class="src"><span class="keyword">type</span> <a id="t:Args" class="def">Args</a> = ([<a href="While.html#t:Var" title="While">Var</a>], [(<a href="While.html#t:Var" title="While">Var</a>, <a href="While.html#t:Aexp" title="While">Aexp</a>)], Maybe <a href="While.html#t:Var" title="While">Var</a>) <a href="src/While.html#Args" class="link">Source</a> <a href="#t:Args" class="selflink">#</a></p></div><div class="top"><p class="src"><span class="keyword">type</span> <a id="t:VarParam" class="def">VarParam</a> = Maybe (<a href="While.html#t:LVal" title="While">LVal</a>, <a href="While.html#t:Aexp" title="While">Aexp</a>) <a href="src/While.html#VarParam" class="link">Source</a> <a href="#t:VarParam" class="selflink">#</a></p></div><div class="top"><p class="src"><span class="keyword">type</span> <a id="t:Params" class="def">Params</a> = ([<a href="While.html#t:Aexp" title="While">Aexp</a>], <a href="While.html#t:VarParam" title="While">VarParam</a>) <a href="src/While.html#Params" class="link">Source</a> <a href="#t:Params" class="selflink">#</a></p></div><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:Stm" class="def">Stm</a> <a href="src/While.html#Stm" class="link">Source</a> <a href="#t:Stm" class="selflink">#</a></p><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a href="While.html#t:LVal" title="While">LVal</a> <a id="v::-61-" class="def">:=</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:Proc" class="def">Proc</a> <a href="While.html#t:Var" title="While">Var</a> <a href="While.html#t:Args" title="While">Args</a> <a href="While.html#t:Stm" title="While">Stm</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:Skip" class="def">Skip</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a href="While.html#t:Stm" title="While">Stm</a> <a id="v::-62-" class="def">:&gt;</a> <a href="While.html#t:Stm" title="While">Stm</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:If" class="def">If</a> <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="While.html#t:Stm" title="While">Stm</a> <a href="While.html#t:Stm" title="While">Stm</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:While" class="def">While</a> <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="While.html#t:Stm" title="While">Stm</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:Block" class="def">Block</a> [(<a href="While.html#t:Var" title="While">Var</a>, <a href="While.html#t:Aexp" title="While">Aexp</a>)] <a href="While.html#t:Stm" title="While">Stm</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:Call" class="def">Call</a> <a href="While.html#t:Var" title="While">Var</a> <a href="While.html#t:Params" title="While">Params</a></td><td class="doc empty">&nbsp;</td></tr></table></div><div class="subs instances"><details id="i:Stm" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Stm:Show:1"></span> Show <a href="While.html#t:Stm" title="While">Stm</a></span> <a href="src/While.html#line-60" class="link">Source</a> <a href="#t:Stm" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:Stm:Show:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="While.html#t:Stm" title="While">Stm</a> -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="While.html#t:Stm" title="While">Stm</a> -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="While.html#t:Stm" title="While">Stm</a>] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><a id="v:precedence" class="def">precedence</a> :: [<a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> (a -&gt; a -&gt; a)] -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> a -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> a <a href="src/While.html#precedence" class="link">Source</a> <a href="#v:precedence" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:aops" class="def">aops</a> :: [<a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> (<a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a>)] <a href="src/While.html#aops" class="link">Source</a> <a href="#v:aops" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:aexp" class="def">aexp</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Aexp" title="While">Aexp</a> <a href="src/While.html#aexp" class="link">Source</a> <a href="#v:aexp" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:bexp" class="def">bexp</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="src/While.html#bexp" class="link">Source</a> <a href="#v:bexp" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:neq" class="def">neq</a> :: <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="src/While.html#neq" class="link">Source</a> <a href="#v:neq" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:lte" class="def">lte</a> :: <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="src/While.html#lte" class="link">Source</a> <a href="#v:lte" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:gte" class="def">gte</a> :: <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="src/While.html#gte" class="link">Source</a> <a href="#v:gte" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:-124-:" class="def">(|:)</a> :: <a href="While.html#t:Bexp" title="While">Bexp</a> -&gt; <a href="While.html#t:Bexp" title="While">Bexp</a> -&gt; <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="src/While.html#%7C%3A" class="link">Source</a> <a href="#v:-124-:" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:arrayRoot" class="def">arrayRoot</a> :: <a href="While.html#t:Var" title="While">Var</a> -&gt; <a href="While.html#t:Var" title="While">Var</a> <a href="src/While.html#arrayRoot" class="link">Source</a> <a href="#v:arrayRoot" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:vars" class="def">vars</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> [(<a href="While.html#t:Var" title="While">Var</a>, <a href="While.html#t:Aexp" title="While">Aexp</a>)] <a href="src/While.html#vars" class="link">Source</a> <a href="#v:vars" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:optional" class="def">optional</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> a -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> (Maybe a) <a href="src/While.html#optional" class="link">Source</a> <a href="#v:optional" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:stms" class="def">stms</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Stm" title="While">Stm</a> <a href="src/While.html#stms" class="link">Source</a> <a href="#v:stms" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:unsemidStm" class="def">unsemidStm</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Stm" title="While">Stm</a> <a href="src/While.html#unsemidStm" class="link">Source</a> <a href="#v:unsemidStm" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:semidStm" class="def">semidStm</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Stm" title="While">Stm</a> <a href="src/While.html#semidStm" class="link">Source</a> <a href="#v:semidStm" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:loopCond" class="def">loopCond</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Bexp" title="While">Bexp</a> <a href="src/While.html#loopCond" class="link">Source</a> <a href="#v:loopCond" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:commaOrEnd" class="def">commaOrEnd</a> :: String -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> () <a href="src/While.html#commaOrEnd" class="link">Source</a> <a href="#v:commaOrEnd" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:varParam" class="def">varParam</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:VarParam" title="While">VarParam</a> <a href="src/While.html#varParam" class="link">Source</a> <a href="#v:varParam" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:args" class="def">args</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Args" title="While">Args</a> <a href="src/While.html#args" class="link">Source</a> <a href="#v:args" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:params" class="def">params</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Params" title="While">Params</a> <a href="src/While.html#params" class="link">Source</a> <a href="#v:params" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:compoundStm" class="def">compoundStm</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Stm" title="While">Stm</a> <a href="src/While.html#compoundStm" class="link">Source</a> <a href="#v:compoundStm" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:simpleStm" class="def">simpleStm</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Stm" title="While">Stm</a> <a href="src/While.html#simpleStm" class="link">Source</a> <a href="#v:simpleStm" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:modAssn" class="def">modAssn</a> :: <a href="While.html#t:LVal" title="While">LVal</a> -&gt; (<a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a>) -&gt; <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:Stm" title="While">Stm</a> <a href="src/While.html#modAssn" class="link">Source</a> <a href="#v:modAssn" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:repeatWhile" class="def">repeatWhile</a> :: <a href="While.html#t:Stm" title="While">Stm</a> -&gt; <a href="While.html#t:Bexp" title="While">Bexp</a> -&gt; <a href="While.html#t:Stm" title="While">Stm</a> <a href="src/While.html#repeatWhile" class="link">Source</a> <a href="#v:repeatWhile" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:num" class="def">num</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> Int <a href="src/While.html#num" class="link">Source</a> <a href="#v:num" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:keywords" class="def">keywords</a> :: [[Char]] <a href="src/While.html#keywords" class="link">Source</a> <a href="#v:keywords" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:wordChar" class="def">wordChar</a> :: Char -&gt; Bool <a href="src/While.html#wordChar" class="link">Source</a> <a href="#v:wordChar" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:firstChar" class="def">firstChar</a> :: Char -&gt; Bool <a href="src/While.html#firstChar" class="link">Source</a> <a href="#v:firstChar" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:endWord" class="def">endWord</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> () <a href="src/While.html#endWord" class="link">Source</a> <a href="#v:endWord" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:var" class="def">var</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Var" title="While">Var</a> <a href="src/While.html#var" class="link">Source</a> <a href="#v:var" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:word" class="def">word</a> :: String -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:Var" title="While">Var</a> <a href="src/While.html#word" class="link">Source</a> <a href="#v:word" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:lval" class="def">lval</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:LVal" title="While">LVal</a> <a href="src/While.html#lval" class="link">Source</a> <a href="#v:lval" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:whitespace" class="def">whitespace</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> () <a href="src/While.html#whitespace" class="link">Source</a> <a href="#v:whitespace" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:comment" class="def">comment</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> () <a href="src/While.html#comment" class="link">Source</a> <a href="#v:comment" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:tok" class="def">tok</a> :: String -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> String <a href="src/While.html#tok" class="link">Source</a> <a href="#v:tok" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:maybeToEither" class="def">maybeToEither</a> :: a -&gt; Maybe b -&gt; Either a b <a href="src/While.html#maybeToEither" class="link">Source</a> <a href="#v:maybeToEither" class="selflink">#</a></p></div><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:Function" class="def">Function</a> <a href="src/While.html#Function" class="link">Source</a> <a href="#t:Function" class="selflink">#</a></p><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a href="While.html#t:Args" title="While">Args</a> <a id="v::-45--62-" class="def">:-&gt;</a> <a href="While.html#t:Stm" title="While">Stm</a></td><td class="doc empty">&nbsp;</td></tr></table></div></div><div class="top"><p class="src"><span class="keyword">type</span> <a id="t:State" class="def">State</a> = [(Map <a href="While.html#t:Var" title="While">Var</a> Int, Map <a href="While.html#t:Var" title="While">Var</a> <a href="While.html#t:Function" title="While">Function</a>)] <a href="src/While.html#State" class="link">Source</a> <a href="#t:State" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:lookup" class="def">lookup</a> :: <a href="While.html#t:State" title="While">State</a> -&gt; <a href="While.html#t:Var" title="While">Var</a> -&gt; Maybe Int <a href="src/While.html#lookup" class="link">Source</a> <a href="#v:lookup" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:pushState" class="def">pushState</a> :: [(<a href="While.html#t:Var" title="While">Var</a>, <a href="While.html#t:Aexp" title="While">Aexp</a>)] -&gt; <a href="While.html#t:State" title="While">State</a> -&gt; Either String <a href="While.html#t:State" title="While">State</a> <a href="src/While.html#pushState" class="link">Source</a> <a href="#v:pushState" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:popState" class="def">popState</a> :: <a href="While.html#t:State" title="While">State</a> -&gt; <a href="While.html#t:State" title="While">State</a> <a href="src/While.html#popState" class="link">Source</a> <a href="#v:popState" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:var_name" class="def">var_name</a> :: <a href="While.html#t:LVal" title="While">LVal</a> -&gt; <a href="While.html#t:State" title="While">State</a> -&gt; Either String <a href="While.html#t:Var" title="While">Var</a> <a href="src/While.html#var_name" class="link">Source</a> <a href="#v:var_name" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:a_val" class="def">a_val</a> :: <a href="While.html#t:Aexp" title="While">Aexp</a> -&gt; <a href="While.html#t:State" title="While">State</a> -&gt; Either String Int <a href="src/While.html#a_val" class="link">Source</a> <a href="#v:a_val" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:b_val" class="def">b_val</a> :: <a href="While.html#t:Bexp" title="While">Bexp</a> -&gt; <a href="While.html#t:State" title="While">State</a> -&gt; Either String Bool <a href="src/While.html#b_val" class="link">Source</a> <a href="#v:b_val" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:update" class="def">update</a> :: <a href="While.html#t:State" title="While">State</a> -&gt; <a href="While.html#t:Var" title="While">Var</a> -&gt; Int -&gt; <a href="While.html#t:State" title="While">State</a> <a href="src/While.html#update" class="link">Source</a> <a href="#v:update" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:defProc" class="def">defProc</a> :: <a href="While.html#t:State" title="While">State</a> -&gt; <a href="While.html#t:Var" title="While">Var</a> -&gt; <a href="While.html#t:Args" title="While">Args</a> -&gt; <a href="While.html#t:Stm" title="While">Stm</a> -&gt; <a href="While.html#t:State" title="While">State</a> <a href="src/While.html#defProc" class="link">Source</a> <a href="#v:defProc" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:mapMFst" class="def">mapMFst</a> :: Monad m =&gt; (a -&gt; m c) -&gt; (a, b) -&gt; m (c, b) <a href="src/While.html#mapMFst" class="link">Source</a> <a href="#v:mapMFst" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:bnidFst" class="def">bnidFst</a> :: Monad m =&gt; (a -&gt; m c) -&gt; m (a, b) -&gt; m (c, b) <a href="src/While.html#bnidFst" class="link">Source</a> <a href="#v:bnidFst" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:bindFst" class="def">bindFst</a> :: Monad m =&gt; m (a, b) -&gt; (a -&gt; m c) -&gt; m (c, b) <a href="src/While.html#bindFst" class="link">Source</a> <a href="#v:bindFst" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:fstSeq" class="def">fstSeq</a> :: Monad m =&gt; (m a, b) -&gt; m (a, b) <a href="src/While.html#fstSeq" class="link">Source</a> <a href="#v:fstSeq" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:mapMSnd" class="def">mapMSnd</a> :: Monad m =&gt; (b -&gt; m c) -&gt; (a, b) -&gt; m (a, c) <a href="src/While.html#mapMSnd" class="link">Source</a> <a href="#v:mapMSnd" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:bnidSnd" class="def">bnidSnd</a> :: Monad m =&gt; (b -&gt; m c) -&gt; m (a, b) -&gt; m (a, c) <a href="src/While.html#bnidSnd" class="link">Source</a> <a href="#v:bnidSnd" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:bindSnd" class="def">bindSnd</a> :: Monad m =&gt; m (a, b) -&gt; (b -&gt; m c) -&gt; m (a, c) <a href="src/While.html#bindSnd" class="link">Source</a> <a href="#v:bindSnd" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:sndSeq" class="def">sndSeq</a> :: Monad m =&gt; (a, m b) -&gt; m (a, b) <a href="src/While.html#sndSeq" class="link">Source</a> <a href="#v:sndSeq" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:assign" class="def">assign</a> :: <a href="While.html#t:Var" title="While">Var</a> -&gt; <a href="While.html#t:Args" title="While">Args</a> -&gt; <a href="While.html#t:Params" title="While">Params</a> -&gt; <a href="While.html#t:State" title="While">State</a> -&gt; Either String (<a href="While.html#t:State" title="While">State</a>, <a href="While.html#t:Stm" title="While">Stm</a>) <a href="src/While.html#assign" class="link">Source</a> <a href="#v:assign" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:callProc" class="def">callProc</a> :: <a href="While.html#t:State" title="While">State</a> -&gt; <a href="While.html#t:Var" title="While">Var</a> -&gt; <a href="While.html#t:Params" title="While">Params</a> -&gt; (<a href="While.html#t:Stm" title="While">Stm</a> -&gt; <a href="While.html#t:State" title="While">State</a> -&gt; Either String <a href="While.html#t:State" title="While">State</a>) -&gt; Either String <a href="While.html#t:State" title="While">State</a> <a href="src/While.html#callProc" class="link">Source</a> <a href="#v:callProc" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:cond" class="def">cond</a> :: Monad m =&gt; (a -&gt; m Bool) -&gt; (a -&gt; m b) -&gt; (a -&gt; m b) -&gt; a -&gt; m b <a href="src/While.html#cond" class="link">Source</a> <a href="#v:cond" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:fix" class="def">fix</a> :: (a -&gt; a) -&gt; a <a href="src/While.html#fix" class="link">Source</a> <a href="#v:fix" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:s_ds" class="def">s_ds</a> :: <a href="While.html#t:Stm" title="While">Stm</a> -&gt; <a href="While.html#t:State" title="While">State</a> -&gt; Either String <a href="While.html#t:State" title="While">State</a> <a href="src/While.html#s_ds" class="link">Source</a> <a href="#v:s_ds" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:emptyState" class="def">emptyState</a> :: <a href="While.html#t:State" title="While">State</a> <a href="src/While.html#emptyState" class="link">Source</a> <a href="#v:emptyState" class="selflink">#</a></p></div><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:ReplExpr" class="def">ReplExpr</a> <a href="src/While.html#ReplExpr" class="link">Source</a> <a href="#t:ReplExpr" class="selflink">#</a></p><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a id="v:Aexp" class="def">Aexp</a> <a href="While.html#t:Aexp" title="While">Aexp</a></td><td class="doc empty">&nbsp;</td></tr><tr><td class="src"><a id="v:Bexp" class="def">Bexp</a> <a href="While.html#t:Bexp" title="While">Bexp</a></td><td class="doc empty">&nbsp;</td></tr></table></div><div class="subs instances"><details id="i:ReplExpr" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ReplExpr:Show:1"></span> Show <a href="While.html#t:ReplExpr" title="While">ReplExpr</a></span> <a href="src/While.html#line-358" class="link">Source</a> <a href="#t:ReplExpr" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:ReplExpr:Show:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="While.html#t:ReplExpr" title="While">ReplExpr</a> -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="While.html#t:ReplExpr" title="While">ReplExpr</a> -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="While.html#t:ReplExpr" title="While">ReplExpr</a>] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:ReplStm" class="def">ReplStm</a> <a href="src/While.html#ReplStm" class="link">Source</a> <a href="#t:ReplStm" class="selflink">#</a></p><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a id="v:Stm" class="def">Stm</a> <a href="While.html#t:Stm" title="While">Stm</a> (Maybe <a href="While.html#t:ReplExpr" title="While">ReplExpr</a>)</td><td class="doc empty">&nbsp;</td></tr></table></div><div class="subs instances"><details id="i:ReplStm" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ReplStm:Show:1"></span> Show <a href="While.html#t:ReplStm" title="While">ReplStm</a></span> <a href="src/While.html#line-359" class="link">Source</a> <a href="#t:ReplStm" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:ReplStm:Show:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="While.html#t:ReplStm" title="While">ReplStm</a> -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="While.html#t:ReplStm" title="While">ReplStm</a> -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="While.html#t:ReplStm" title="While">ReplStm</a>] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><a id="v:replExpr" class="def">replExpr</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:ReplExpr" title="While">ReplExpr</a> <a href="src/While.html#replExpr" class="link">Source</a> <a href="#v:replExpr" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:replStm" class="def">replStm</a> :: <a href="Parser-Types.html#t:Parser" title="Parser.Types">Parser</a> <a href="While.html#t:ReplStm" title="While">ReplStm</a> <a href="src/While.html#replStm" class="link">Source</a> <a href="#v:replStm" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:getStm" class="def">getStm</a> :: IO <a href="While.html#t:ReplStm" title="While">ReplStm</a> <a href="src/While.html#getStm" class="link">Source</a> <a href="#v:getStm" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:doOrLog" class="def">doOrLog</a> :: MonadIO m =&gt; Either String a -&gt; (a -&gt; m ()) -&gt; m () <a href="src/While.html#doOrLog" class="link">Source</a> <a href="#v:doOrLog" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:replT" class="def">replT</a> :: StateT <a href="While.html#t:State" title="While">State</a> IO () <a href="src/While.html#replT" class="link">Source</a> <a href="#v:replT" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:printOutput" class="def">printOutput</a> :: <a href="While.html#t:State" title="While">State</a> -&gt; IO () <a href="src/While.html#printOutput" class="link">Source</a> <a href="#v:printOutput" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:runFile" class="def">runFile</a> :: String -&gt; [String] -&gt; IO () <a href="src/While.html#runFile" class="link">Source</a> <a href="#v:runFile" class="selflink">#</a></p></div><div class="top"><p class="src"><a id="v:main" class="def">main</a> :: IO () <a href="src/While.html#main" class="link">Source</a> <a href="#v:main" class="selflink">#</a></p></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.19.0</p></div></body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><title
+    >While</title
+    ><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean"
+     /><link rel="stylesheet" type="text/css" href="quick-jump.css"
+     /><script src="haddock-bundle.min.js" async="async" type="text/javascript"
+    ></script
+    ><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"
+    ></script
+    ></head
+  ><body
+  ><div id="package-header"
+    ><ul class="links" id="page-menu"
+      ><li
+	><a href="src/While.html"
+	  >Source</a
+	  ></li
+	><li
+	><a href="index.html"
+	  >Contents</a
+	  ></li
+	><li
+	><a href="doc-index.html"
+	  >Index</a
+	  ></li
+	></ul
+      ><p class="caption empty"
+      >&nbsp;</p
+      ></div
+    ><div id="content"
+    ><div id="module-header"
+      ><table class="info"
+	><tr
+	  ><th
+	    >Safe Haskell</th
+	    ><td
+	    >Safe</td
+	    ></tr
+	  ></table
+	><p class="caption"
+	>While</p
+	></div
+      ><div id="interface"
+      ><h1
+	>Documentation</h1
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:LVal" class="def"
+	    >LVal</a
+	    > <a href="src/While.html#LVal" class="link"
+	    >Source</a
+	    > <a href="#t:LVal" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Arr" class="def"
+		  >Arr</a
+		  > <a href="While.html#t:LVal" title="While"
+		  >LVal</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:Var" class="def"
+		  >Var</a
+		  > <a href="While.html#t:Var" title="While"
+		  >Var</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:LVal" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:LVal:Show:1"
+		      ></span
+		      > Show <a href="While.html#t:LVal" title="While"
+		      >LVal</a
+		      ></span
+		    > <a href="src/While.html#line-26" class="link"
+		    >Source</a
+		    > <a href="#t:LVal" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:LVal:Show:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="While.html#t:LVal" title="While"
+			  >LVal</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="While.html#t:LVal" title="While"
+			  >LVal</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="While.html#t:LVal" title="While"
+			  >LVal</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:Aexp" class="def"
+	    >Aexp</a
+	    > <a href="src/While.html#Aexp" class="link"
+	    >Source</a
+	    > <a href="#t:Aexp" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Num" class="def"
+		  >Num</a
+		  > Int</td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:LVal" class="def"
+		  >LVal</a
+		  > <a href="While.html#t:LVal" title="While"
+		  >LVal</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  > <a id="v::-43-:" class="def"
+		  >:+:</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  > <a id="v::-42-:" class="def"
+		  >:*:</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  > <a id="v::-45-:" class="def"
+		  >:-:</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Aexp" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Aexp:Show:1"
+		      ></span
+		      > Show <a href="While.html#t:Aexp" title="While"
+		      >Aexp</a
+		      ></span
+		    > <a href="src/While.html#line-34" class="link"
+		    >Source</a
+		    > <a href="#t:Aexp" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Aexp:Show:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="While.html#t:Aexp" title="While"
+			  >Aexp</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="While.html#t:Aexp" title="While"
+			  >Aexp</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="While.html#t:Aexp" title="While"
+			  >Aexp</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:Bexp" class="def"
+	    >Bexp</a
+	    > <a href="src/While.html#Bexp" class="link"
+	    >Source</a
+	    > <a href="#t:Bexp" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:T" class="def"
+		  >T</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:F" class="def"
+		  >F</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  > <a id="v::-61-:" class="def"
+		  >:=:</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  > <a id="v::-60-:" class="def"
+		  >:&lt;:</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  > <a id="v::-62-:" class="def"
+		  >:&gt;:</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Bexp" title="While"
+		  >Bexp</a
+		  > <a id="v::-38-:" class="def"
+		  >:&amp;:</a
+		  > <a href="While.html#t:Bexp" title="While"
+		  >Bexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:Not" class="def"
+		  >Not</a
+		  > <a href="While.html#t:Bexp" title="While"
+		  >Bexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Bexp" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Bexp:Show:1"
+		      ></span
+		      > Show <a href="While.html#t:Bexp" title="While"
+		      >Bexp</a
+		      ></span
+		    > <a href="src/While.html#line-44" class="link"
+		    >Source</a
+		    > <a href="#t:Bexp" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Bexp:Show:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="While.html#t:Bexp" title="While"
+			  >Bexp</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="While.html#t:Bexp" title="While"
+			  >Bexp</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="While.html#t:Bexp" title="While"
+			  >Bexp</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:Var" class="def"
+	    >Var</a
+	    > = String <a href="src/While.html#Var" class="link"
+	    >Source</a
+	    > <a href="#t:Var" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:Args" class="def"
+	    >Args</a
+	    > = ([<a href="While.html#t:Var" title="While"
+	    >Var</a
+	    >], [(<a href="While.html#t:Var" title="While"
+	    >Var</a
+	    >, <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    >)], Maybe <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    >) <a href="src/While.html#Args" class="link"
+	    >Source</a
+	    > <a href="#t:Args" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:VarParam" class="def"
+	    >VarParam</a
+	    > = Maybe (<a href="While.html#t:LVal" title="While"
+	    >LVal</a
+	    >, <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    >) <a href="src/While.html#VarParam" class="link"
+	    >Source</a
+	    > <a href="#t:VarParam" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:Params" class="def"
+	    >Params</a
+	    > = ([<a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    >], <a href="While.html#t:VarParam" title="While"
+	    >VarParam</a
+	    >) <a href="src/While.html#Params" class="link"
+	    >Source</a
+	    > <a href="#t:Params" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:Stm" class="def"
+	    >Stm</a
+	    > <a href="src/While.html#Stm" class="link"
+	    >Source</a
+	    > <a href="#t:Stm" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a href="While.html#t:LVal" title="While"
+		  >LVal</a
+		  > <a id="v::-61-" class="def"
+		  >:=</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:Proc" class="def"
+		  >Proc</a
+		  > <a href="While.html#t:Var" title="While"
+		  >Var</a
+		  > <a href="While.html#t:Args" title="While"
+		  >Args</a
+		  > <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:Skip" class="def"
+		  >Skip</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  > <a id="v::-62-" class="def"
+		  >:&gt;</a
+		  > <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:If" class="def"
+		  >If</a
+		  > <a href="While.html#t:Bexp" title="While"
+		  >Bexp</a
+		  > <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  > <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:While" class="def"
+		  >While</a
+		  > <a href="While.html#t:Bexp" title="While"
+		  >Bexp</a
+		  > <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:Block" class="def"
+		  >Block</a
+		  > [(<a href="While.html#t:Var" title="While"
+		  >Var</a
+		  >, <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  >)] <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:Call" class="def"
+		  >Call</a
+		  > <a href="While.html#t:Var" title="While"
+		  >Var</a
+		  > <a href="While.html#t:Params" title="While"
+		  >Params</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Stm" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:Stm:Show:1"
+		      ></span
+		      > Show <a href="While.html#t:Stm" title="While"
+		      >Stm</a
+		      ></span
+		    > <a href="src/While.html#line-60" class="link"
+		    >Source</a
+		    > <a href="#t:Stm" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:Stm:Show:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="While.html#t:Stm" title="While"
+			  >Stm</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="While.html#t:Stm" title="While"
+			  >Stm</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="While.html#t:Stm" title="While"
+			  >Stm</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:precedence" class="def"
+	    >precedence</a
+	    > :: [<a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > (a -&gt; a -&gt; a)] -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > a -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > a <a href="src/While.html#precedence" class="link"
+	    >Source</a
+	    > <a href="#v:precedence" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:aops" class="def"
+	    >aops</a
+	    > :: [<a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > (<a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    >)] <a href="src/While.html#aops" class="link"
+	    >Source</a
+	    > <a href="#v:aops" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:aexp" class="def"
+	    >aexp</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > <a href="src/While.html#aexp" class="link"
+	    >Source</a
+	    > <a href="#v:aexp" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:bexp" class="def"
+	    >bexp</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > <a href="src/While.html#bexp" class="link"
+	    >Source</a
+	    > <a href="#v:bexp" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:neq" class="def"
+	    >neq</a
+	    > :: <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > <a href="src/While.html#neq" class="link"
+	    >Source</a
+	    > <a href="#v:neq" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:lte" class="def"
+	    >lte</a
+	    > :: <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > <a href="src/While.html#lte" class="link"
+	    >Source</a
+	    > <a href="#v:lte" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:gte" class="def"
+	    >gte</a
+	    > :: <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > <a href="src/While.html#gte" class="link"
+	    >Source</a
+	    > <a href="#v:gte" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:-124-:" class="def"
+	    >(|:)</a
+	    > :: <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > -&gt; <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > -&gt; <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > <a href="src/While.html#%7C%3A" class="link"
+	    >Source</a
+	    > <a href="#v:-124-:" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:arrayRoot" class="def"
+	    >arrayRoot</a
+	    > :: <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > -&gt; <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > <a href="src/While.html#arrayRoot" class="link"
+	    >Source</a
+	    > <a href="#v:arrayRoot" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:vars" class="def"
+	    >vars</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > [(<a href="While.html#t:Var" title="While"
+	    >Var</a
+	    >, <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    >)] <a href="src/While.html#vars" class="link"
+	    >Source</a
+	    > <a href="#v:vars" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:optional" class="def"
+	    >optional</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > a -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > (Maybe a) <a href="src/While.html#optional" class="link"
+	    >Source</a
+	    > <a href="#v:optional" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:stms" class="def"
+	    >stms</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > <a href="src/While.html#stms" class="link"
+	    >Source</a
+	    > <a href="#v:stms" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:unsemidStm" class="def"
+	    >unsemidStm</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > <a href="src/While.html#unsemidStm" class="link"
+	    >Source</a
+	    > <a href="#v:unsemidStm" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:semidStm" class="def"
+	    >semidStm</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > <a href="src/While.html#semidStm" class="link"
+	    >Source</a
+	    > <a href="#v:semidStm" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:loopCond" class="def"
+	    >loopCond</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > <a href="src/While.html#loopCond" class="link"
+	    >Source</a
+	    > <a href="#v:loopCond" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:commaOrEnd" class="def"
+	    >commaOrEnd</a
+	    > :: String -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > () <a href="src/While.html#commaOrEnd" class="link"
+	    >Source</a
+	    > <a href="#v:commaOrEnd" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:varParam" class="def"
+	    >varParam</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:VarParam" title="While"
+	    >VarParam</a
+	    > <a href="src/While.html#varParam" class="link"
+	    >Source</a
+	    > <a href="#v:varParam" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:args" class="def"
+	    >args</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Args" title="While"
+	    >Args</a
+	    > <a href="src/While.html#args" class="link"
+	    >Source</a
+	    > <a href="#v:args" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:params" class="def"
+	    >params</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Params" title="While"
+	    >Params</a
+	    > <a href="src/While.html#params" class="link"
+	    >Source</a
+	    > <a href="#v:params" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:compoundStm" class="def"
+	    >compoundStm</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > <a href="src/While.html#compoundStm" class="link"
+	    >Source</a
+	    > <a href="#v:compoundStm" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:simpleStm" class="def"
+	    >simpleStm</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > <a href="src/While.html#simpleStm" class="link"
+	    >Source</a
+	    > <a href="#v:simpleStm" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:modAssn" class="def"
+	    >modAssn</a
+	    > :: <a href="While.html#t:LVal" title="While"
+	    >LVal</a
+	    > -&gt; (<a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    >) -&gt; <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > <a href="src/While.html#modAssn" class="link"
+	    >Source</a
+	    > <a href="#v:modAssn" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:repeatWhile" class="def"
+	    >repeatWhile</a
+	    > :: <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > -&gt; <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > -&gt; <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > <a href="src/While.html#repeatWhile" class="link"
+	    >Source</a
+	    > <a href="#v:repeatWhile" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:num" class="def"
+	    >num</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > Int <a href="src/While.html#num" class="link"
+	    >Source</a
+	    > <a href="#v:num" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:keywords" class="def"
+	    >keywords</a
+	    > :: [[Char]] <a href="src/While.html#keywords" class="link"
+	    >Source</a
+	    > <a href="#v:keywords" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:wordChar" class="def"
+	    >wordChar</a
+	    > :: Char -&gt; Bool <a href="src/While.html#wordChar" class="link"
+	    >Source</a
+	    > <a href="#v:wordChar" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:firstChar" class="def"
+	    >firstChar</a
+	    > :: Char -&gt; Bool <a href="src/While.html#firstChar" class="link"
+	    >Source</a
+	    > <a href="#v:firstChar" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:endWord" class="def"
+	    >endWord</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > () <a href="src/While.html#endWord" class="link"
+	    >Source</a
+	    > <a href="#v:endWord" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:var" class="def"
+	    >var</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > <a href="src/While.html#var" class="link"
+	    >Source</a
+	    > <a href="#v:var" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:word" class="def"
+	    >word</a
+	    > :: String -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > <a href="src/While.html#word" class="link"
+	    >Source</a
+	    > <a href="#v:word" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:lval" class="def"
+	    >lval</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:LVal" title="While"
+	    >LVal</a
+	    > <a href="src/While.html#lval" class="link"
+	    >Source</a
+	    > <a href="#v:lval" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:whitespace" class="def"
+	    >whitespace</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > () <a href="src/While.html#whitespace" class="link"
+	    >Source</a
+	    > <a href="#v:whitespace" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:comment" class="def"
+	    >comment</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > () <a href="src/While.html#comment" class="link"
+	    >Source</a
+	    > <a href="#v:comment" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:tok" class="def"
+	    >tok</a
+	    > :: String -&gt; <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > String <a href="src/While.html#tok" class="link"
+	    >Source</a
+	    > <a href="#v:tok" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:maybeToEither" class="def"
+	    >maybeToEither</a
+	    > :: a -&gt; Maybe b -&gt; Either a b <a href="src/While.html#maybeToEither" class="link"
+	    >Source</a
+	    > <a href="#v:maybeToEither" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:Function" class="def"
+	    >Function</a
+	    > <a href="src/While.html#Function" class="link"
+	    >Source</a
+	    > <a href="#t:Function" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a href="While.html#t:Args" title="While"
+		  >Args</a
+		  > <a id="v::-45--62-" class="def"
+		  >:-&gt;</a
+		  > <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >type</span
+	    > <a id="t:State" class="def"
+	    >State</a
+	    > = [(Map <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > Int, Map <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > <a href="While.html#t:Function" title="While"
+	    >Function</a
+	    >)] <a href="src/While.html#State" class="link"
+	    >Source</a
+	    > <a href="#t:State" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:lookup" class="def"
+	    >lookup</a
+	    > :: <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > -&gt; Maybe Int <a href="src/While.html#lookup" class="link"
+	    >Source</a
+	    > <a href="#v:lookup" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:pushState" class="def"
+	    >pushState</a
+	    > :: [(<a href="While.html#t:Var" title="While"
+	    >Var</a
+	    >, <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    >)] -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; Either String <a href="While.html#t:State" title="While"
+	    >State</a
+	    > <a href="src/While.html#pushState" class="link"
+	    >Source</a
+	    > <a href="#v:pushState" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:popState" class="def"
+	    >popState</a
+	    > :: <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > <a href="src/While.html#popState" class="link"
+	    >Source</a
+	    > <a href="#v:popState" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:var_name" class="def"
+	    >var_name</a
+	    > :: <a href="While.html#t:LVal" title="While"
+	    >LVal</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; Either String <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > <a href="src/While.html#var_name" class="link"
+	    >Source</a
+	    > <a href="#v:var_name" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:a_val" class="def"
+	    >a_val</a
+	    > :: <a href="While.html#t:Aexp" title="While"
+	    >Aexp</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; Either String Int <a href="src/While.html#a_val" class="link"
+	    >Source</a
+	    > <a href="#v:a_val" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:b_val" class="def"
+	    >b_val</a
+	    > :: <a href="While.html#t:Bexp" title="While"
+	    >Bexp</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; Either String Bool <a href="src/While.html#b_val" class="link"
+	    >Source</a
+	    > <a href="#v:b_val" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:update" class="def"
+	    >update</a
+	    > :: <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > -&gt; Int -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > <a href="src/While.html#update" class="link"
+	    >Source</a
+	    > <a href="#v:update" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:defProc" class="def"
+	    >defProc</a
+	    > :: <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > -&gt; <a href="While.html#t:Args" title="While"
+	    >Args</a
+	    > -&gt; <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > <a href="src/While.html#defProc" class="link"
+	    >Source</a
+	    > <a href="#v:defProc" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:mapMFst" class="def"
+	    >mapMFst</a
+	    > :: Monad m =&gt; (a -&gt; m c) -&gt; (a, b) -&gt; m (c, b) <a href="src/While.html#mapMFst" class="link"
+	    >Source</a
+	    > <a href="#v:mapMFst" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:bnidFst" class="def"
+	    >bnidFst</a
+	    > :: Monad m =&gt; (a -&gt; m c) -&gt; m (a, b) -&gt; m (c, b) <a href="src/While.html#bnidFst" class="link"
+	    >Source</a
+	    > <a href="#v:bnidFst" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:bindFst" class="def"
+	    >bindFst</a
+	    > :: Monad m =&gt; m (a, b) -&gt; (a -&gt; m c) -&gt; m (c, b) <a href="src/While.html#bindFst" class="link"
+	    >Source</a
+	    > <a href="#v:bindFst" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:fstSeq" class="def"
+	    >fstSeq</a
+	    > :: Monad m =&gt; (m a, b) -&gt; m (a, b) <a href="src/While.html#fstSeq" class="link"
+	    >Source</a
+	    > <a href="#v:fstSeq" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:mapMSnd" class="def"
+	    >mapMSnd</a
+	    > :: Monad m =&gt; (b -&gt; m c) -&gt; (a, b) -&gt; m (a, c) <a href="src/While.html#mapMSnd" class="link"
+	    >Source</a
+	    > <a href="#v:mapMSnd" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:bnidSnd" class="def"
+	    >bnidSnd</a
+	    > :: Monad m =&gt; (b -&gt; m c) -&gt; m (a, b) -&gt; m (a, c) <a href="src/While.html#bnidSnd" class="link"
+	    >Source</a
+	    > <a href="#v:bnidSnd" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:bindSnd" class="def"
+	    >bindSnd</a
+	    > :: Monad m =&gt; m (a, b) -&gt; (b -&gt; m c) -&gt; m (a, c) <a href="src/While.html#bindSnd" class="link"
+	    >Source</a
+	    > <a href="#v:bindSnd" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:sndSeq" class="def"
+	    >sndSeq</a
+	    > :: Monad m =&gt; (a, m b) -&gt; m (a, b) <a href="src/While.html#sndSeq" class="link"
+	    >Source</a
+	    > <a href="#v:sndSeq" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:assign" class="def"
+	    >assign</a
+	    > :: <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > -&gt; <a href="While.html#t:Args" title="While"
+	    >Args</a
+	    > -&gt; <a href="While.html#t:Params" title="While"
+	    >Params</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; Either String (<a href="While.html#t:State" title="While"
+	    >State</a
+	    >, <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    >) <a href="src/While.html#assign" class="link"
+	    >Source</a
+	    > <a href="#v:assign" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:callProc" class="def"
+	    >callProc</a
+	    > :: <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; <a href="While.html#t:Var" title="While"
+	    >Var</a
+	    > -&gt; <a href="While.html#t:Params" title="While"
+	    >Params</a
+	    > -&gt; (<a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; Either String <a href="While.html#t:State" title="While"
+	    >State</a
+	    >) -&gt; Either String <a href="While.html#t:State" title="While"
+	    >State</a
+	    > <a href="src/While.html#callProc" class="link"
+	    >Source</a
+	    > <a href="#v:callProc" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:cond" class="def"
+	    >cond</a
+	    > :: Monad m =&gt; (a -&gt; m Bool) -&gt; (a -&gt; m b) -&gt; (a -&gt; m b) -&gt; a -&gt; m b <a href="src/While.html#cond" class="link"
+	    >Source</a
+	    > <a href="#v:cond" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:fix" class="def"
+	    >fix</a
+	    > :: (a -&gt; a) -&gt; a <a href="src/While.html#fix" class="link"
+	    >Source</a
+	    > <a href="#v:fix" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:s_ds" class="def"
+	    >s_ds</a
+	    > :: <a href="While.html#t:Stm" title="While"
+	    >Stm</a
+	    > -&gt; <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; Either String <a href="While.html#t:State" title="While"
+	    >State</a
+	    > <a href="src/While.html#s_ds" class="link"
+	    >Source</a
+	    > <a href="#v:s_ds" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:emptyState" class="def"
+	    >emptyState</a
+	    > :: <a href="While.html#t:State" title="While"
+	    >State</a
+	    > <a href="src/While.html#emptyState" class="link"
+	    >Source</a
+	    > <a href="#v:emptyState" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:ReplExpr" class="def"
+	    >ReplExpr</a
+	    > <a href="src/While.html#ReplExpr" class="link"
+	    >Source</a
+	    > <a href="#t:ReplExpr" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Aexp" class="def"
+		  >Aexp</a
+		  > <a href="While.html#t:Aexp" title="While"
+		  >Aexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:Bexp" class="def"
+		  >Bexp</a
+		  > <a href="While.html#t:Bexp" title="While"
+		  >Bexp</a
+		  ></td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:ReplExpr" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ReplExpr:Show:1"
+		      ></span
+		      > Show <a href="While.html#t:ReplExpr" title="While"
+		      >ReplExpr</a
+		      ></span
+		    > <a href="src/While.html#line-358" class="link"
+		    >Source</a
+		    > <a href="#t:ReplExpr" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:ReplExpr:Show:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="While.html#t:ReplExpr" title="While"
+			  >ReplExpr</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="While.html#t:ReplExpr" title="While"
+			  >ReplExpr</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="While.html#t:ReplExpr" title="While"
+			  >ReplExpr</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:ReplStm" class="def"
+	    >ReplStm</a
+	    > <a href="src/While.html#ReplStm" class="link"
+	    >Source</a
+	    > <a href="#t:ReplStm" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:Stm" class="def"
+		  >Stm</a
+		  > <a href="While.html#t:Stm" title="While"
+		  >Stm</a
+		  > (Maybe <a href="While.html#t:ReplExpr" title="While"
+		  >ReplExpr</a
+		  >)</td
+		><td class="doc empty"
+		>&nbsp;</td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:ReplStm" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ReplStm:Show:1"
+		      ></span
+		      > Show <a href="While.html#t:ReplStm" title="While"
+		      >ReplStm</a
+		      ></span
+		    > <a href="src/While.html#line-359" class="link"
+		    >Source</a
+		    > <a href="#t:ReplStm" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:ReplStm:Show:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="While.html#t:ReplStm" title="While"
+			  >ReplStm</a
+			  > -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="While.html#t:ReplStm" title="While"
+			  >ReplStm</a
+			  > -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="While.html#t:ReplStm" title="While"
+			  >ReplStm</a
+			  >] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:replExpr" class="def"
+	    >replExpr</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:ReplExpr" title="While"
+	    >ReplExpr</a
+	    > <a href="src/While.html#replExpr" class="link"
+	    >Source</a
+	    > <a href="#v:replExpr" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:replStm" class="def"
+	    >replStm</a
+	    > :: <a href="Parser-Types.html#t:Parser" title="Parser.Types"
+	    >Parser</a
+	    > <a href="While.html#t:ReplStm" title="While"
+	    >ReplStm</a
+	    > <a href="src/While.html#replStm" class="link"
+	    >Source</a
+	    > <a href="#v:replStm" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:getStm" class="def"
+	    >getStm</a
+	    > :: IO <a href="While.html#t:ReplStm" title="While"
+	    >ReplStm</a
+	    > <a href="src/While.html#getStm" class="link"
+	    >Source</a
+	    > <a href="#v:getStm" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:doOrLog" class="def"
+	    >doOrLog</a
+	    > :: MonadIO m =&gt; Either String a -&gt; (a -&gt; m ()) -&gt; m () <a href="src/While.html#doOrLog" class="link"
+	    >Source</a
+	    > <a href="#v:doOrLog" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:replT" class="def"
+	    >replT</a
+	    > :: StateT <a href="While.html#t:State" title="While"
+	    >State</a
+	    > IO () <a href="src/While.html#replT" class="link"
+	    >Source</a
+	    > <a href="#v:replT" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:printOutput" class="def"
+	    >printOutput</a
+	    > :: <a href="While.html#t:State" title="While"
+	    >State</a
+	    > -&gt; IO () <a href="src/While.html#printOutput" class="link"
+	    >Source</a
+	    > <a href="#v:printOutput" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:runFile" class="def"
+	    >runFile</a
+	    > :: String -&gt; [String] -&gt; IO () <a href="src/While.html#runFile" class="link"
+	    >Source</a
+	    > <a href="#v:runFile" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:main" class="def"
+	    >main</a
+	    > :: IO () <a href="src/While.html#main" class="link"
+	    >Source</a
+	    > <a href="#v:main" class="selflink"
+	    >#</a
+	    ></p
+	  ></div
+	></div
+      ></div
+    ><div id="footer"
+    ><p
+      >Produced by <a href="http://www.haskell.org/haddock/"
+	>Haddock</a
+	> version 2.19.0</p
+      ></div
+    ></body
+  ></html
+>

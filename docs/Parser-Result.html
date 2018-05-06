@@ -1,4 +1,554 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Parser.Result</title><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean" /><link rel="stylesheet" type="text/css" href="quick-jump.css" /><script src="haddock-bundle.min.js" async="async" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script></head><body><div id="package-header"><ul class="links" id="page-menu"><li><a href="src/Parser.Result.html">Source</a></li><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul><p class="caption empty">&nbsp;</p></div><div id="content"><div id="module-header"><table class="info"><tr><th>Safe Haskell</th><td>Safe</td></tr></table><p class="caption">Parser.Result</p></div><div id="synopsis"><details id="syn"><summary>Synopsis</summary><ul class="details-toggle" data-details-id="syn"><li class="src short"><span class="keyword">data</span> <a href="#t:SingleResult">SingleResult</a> a<ul class="subs"><li>= <a href="#v:SIncomplete">SIncomplete</a></li><li>| <a href="#v:SParsed">SParsed</a> a</li><li>| <a href="#v:SFailed">SFailed</a></li></ul></li><li class="src short"><span class="keyword">data</span> <a href="#t:ListResult">ListResult</a> a<ul class="subs"><li>= <a href="#v:LIncomplete">LIncomplete</a></li><li>| <a href="#v:LParsed">LParsed</a> [a]</li><li>| <a href="#v:LFailed">LFailed</a></li></ul></li><li class="src short"><span class="keyword">class</span> <a href="#t:Results">Results</a> r</li><li class="src short"><a href="#v:results">results</a> :: <a href="Parser-Result.html#t:Results" title="Parser.Result">Results</a> r =&gt; <a href="Parser-Types.html#t:Parses" title="Parser.Types">Parses</a> a -&gt; r a</li></ul></details></div><div id="interface"><h1>Documentation</h1><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:SingleResult" class="def">SingleResult</a> a <a href="src/Parser.Result.html#SingleResult" class="link">Source</a> <a href="#t:SingleResult" class="selflink">#</a></p><div class="doc"><p>The result of a possibly partial parse, where only the first successful
- parse is given, if present.</p></div><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a id="v:SIncomplete" class="def">SIncomplete</a></td><td class="doc"><p>The result is not a valid parse, but it is a prefix of a valid parse.</p></td></tr><tr><td class="src"><a id="v:SParsed" class="def">SParsed</a> a</td><td class="doc"><p>The parse was successful, and the first successful parse is given.</p></td></tr><tr><td class="src"><a id="v:SFailed" class="def">SFailed</a></td><td class="doc"><p>The result is not a valid parse.</p></td></tr></table></div><div class="subs instances"><details id="i:SingleResult" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:SingleResult:Results:1"></span> <a href="Parser-Result.html#t:Results" title="Parser.Result">Results</a> <a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a></span> <a href="src/Parser.Result.html#line-44" class="link">Source</a> <a href="#t:SingleResult" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:SingleResult:Results:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:results">results</a> :: <a href="Parser-Types.html#t:Parses" title="Parser.Types">Parses</a> a -&gt; <a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a> a <a href="src/Parser.Result.html#results" class="link">Source</a> <a href="#v:results" class="selflink">#</a></p></div></details></td></tr><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:SingleResult:Show:2"></span> Show a =&gt; Show (<a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a> a)</span> <a href="src/Parser.Result.html#line-20" class="link">Source</a> <a href="#t:SingleResult" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:SingleResult:Show:2"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a> a -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a> a -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a> a] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><span class="keyword">data</span> <a id="t:ListResult" class="def">ListResult</a> a <a href="src/Parser.Result.html#ListResult" class="link">Source</a> <a href="#t:ListResult" class="selflink">#</a></p><div class="doc"><p>The result of a possibly partial parse, where every successful parse is
- given, if present.</p></div><div class="subs constructors"><p class="caption">Constructors</p><table><tr><td class="src"><a id="v:LIncomplete" class="def">LIncomplete</a></td><td class="doc"><p>The result is not a valid parse, but it is a prefix of a valid parse.</p></td></tr><tr><td class="src"><a id="v:LParsed" class="def">LParsed</a> [a]</td><td class="doc"><p>The parse was successful, and every successful parse is given in a
- list.</p></td></tr><tr><td class="src"><a id="v:LFailed" class="def">LFailed</a></td><td class="doc"><p>The result is not a valid parse.</p></td></tr></table></div><div class="subs instances"><details id="i:ListResult" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ListResult:Results:1"></span> <a href="Parser-Result.html#t:Results" title="Parser.Result">Results</a> <a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a></span> <a href="src/Parser.Result.html#line-38" class="link">Source</a> <a href="#t:ListResult" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:ListResult:Results:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:results">results</a> :: <a href="Parser-Types.html#t:Parses" title="Parser.Types">Parses</a> a -&gt; <a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a> a <a href="src/Parser.Result.html#results" class="link">Source</a> <a href="#v:results" class="selflink">#</a></p></div></details></td></tr><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ListResult:Show:2"></span> Show a =&gt; Show (<a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a> a)</span> <a href="src/Parser.Result.html#line-31" class="link">Source</a> <a href="#t:ListResult" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:id:ListResult:Show:2"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:showsPrec">showsPrec</a> :: Int -&gt; <a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a> a -&gt; ShowS</p><p class="src"><a href="#v:show">show</a> :: <a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a> a -&gt; String</p><p class="src"><a href="#v:showList">showList</a> :: [<a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a> a] -&gt; ShowS</p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><span class="keyword">class</span> <a id="t:Results" class="def">Results</a> r <a href="src/Parser.Result.html#Results" class="link">Source</a> <a href="#t:Results" class="selflink">#</a></p><div class="doc"><p>A typeclass for all the ways to receive the result of a partial parse.</p></div><div class="subs minimal"><p class="caption">Minimal complete definition</p><p class="src"><a href="Parser-Result.html#v:results" title="Parser.Result">results</a></p></div><div class="subs instances"><details id="i:Results" open="open"><summary>Instances</summary><table><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:ic:Results:Results:1"></span> <a href="Parser-Result.html#t:Results" title="Parser.Result">Results</a> <a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a></span> <a href="src/Parser.Result.html#line-38" class="link">Source</a> <a href="#t:Results" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:ic:Results:Results:1"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:results">results</a> :: <a href="Parser-Types.html#t:Parses" title="Parser.Types">Parses</a> a -&gt; <a href="Parser-Result.html#t:ListResult" title="Parser.Result">ListResult</a> a <a href="src/Parser.Result.html#results" class="link">Source</a> <a href="#v:results" class="selflink">#</a></p></div></details></td></tr><tr><td class="src clearfix"><span class="inst-left"><span class="instance details-toggle-control details-toggle" data-details-id="i:ic:Results:Results:2"></span> <a href="Parser-Result.html#t:Results" title="Parser.Result">Results</a> <a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a></span> <a href="src/Parser.Result.html#line-44" class="link">Source</a> <a href="#t:Results" class="selflink">#</a></td><td class="doc empty">&nbsp;</td></tr><tr><td colspan="2"><details id="i:ic:Results:Results:2"><summary class="hide-when-js-enabled">Instance details</summary><div class="subs methods"><p class="caption">Methods</p><p class="src"><a href="#v:results">results</a> :: <a href="Parser-Types.html#t:Parses" title="Parser.Types">Parses</a> a -&gt; <a href="Parser-Result.html#t:SingleResult" title="Parser.Result">SingleResult</a> a <a href="src/Parser.Result.html#results" class="link">Source</a> <a href="#v:results" class="selflink">#</a></p></div></details></td></tr></table></details></div></div><div class="top"><p class="src"><a id="v:results" class="def">results</a> :: <a href="Parser-Result.html#t:Results" title="Parser.Result">Results</a> r =&gt; <a href="Parser-Types.html#t:Parses" title="Parser.Types">Parses</a> a -&gt; r a <a href="src/Parser.Result.html#results" class="link">Source</a> <a href="#v:results" class="selflink">#</a></p><div class="doc"><p>Produce a result of a partial parse.</p></div></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.19.0</p></div></body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><title
+    >Parser.Result</title
+    ><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean"
+     /><link rel="stylesheet" type="text/css" href="quick-jump.css"
+     /><script src="haddock-bundle.min.js" async="async" type="text/javascript"
+    ></script
+    ><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"
+    ></script
+    ></head
+  ><body
+  ><div id="package-header"
+    ><ul class="links" id="page-menu"
+      ><li
+	><a href="src/Parser.Result.html"
+	  >Source</a
+	  ></li
+	><li
+	><a href="index.html"
+	  >Contents</a
+	  ></li
+	><li
+	><a href="doc-index.html"
+	  >Index</a
+	  ></li
+	></ul
+      ><p class="caption empty"
+      >&nbsp;</p
+      ></div
+    ><div id="content"
+    ><div id="module-header"
+      ><table class="info"
+	><tr
+	  ><th
+	    >Safe Haskell</th
+	    ><td
+	    >Safe</td
+	    ></tr
+	  ></table
+	><p class="caption"
+	>Parser.Result</p
+	></div
+      ><div id="synopsis"
+      ><details id="syn"
+	><summary
+	  >Synopsis</summary
+	  ><ul class="details-toggle" data-details-id="syn"
+	  ><li class="src short"
+	    ><span class="keyword"
+	      >data</span
+	      > <a href="#t:SingleResult"
+	      >SingleResult</a
+	      > a<ul class="subs"
+	      ><li
+		>= <a href="#v:SIncomplete"
+		  >SIncomplete</a
+		  ></li
+		><li
+		>| <a href="#v:SParsed"
+		  >SParsed</a
+		  > a</li
+		><li
+		>| <a href="#v:SFailed"
+		  >SFailed</a
+		  ></li
+		></ul
+	      ></li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >data</span
+	      > <a href="#t:ListResult"
+	      >ListResult</a
+	      > a<ul class="subs"
+	      ><li
+		>= <a href="#v:LIncomplete"
+		  >LIncomplete</a
+		  ></li
+		><li
+		>| <a href="#v:LParsed"
+		  >LParsed</a
+		  > [a]</li
+		><li
+		>| <a href="#v:LFailed"
+		  >LFailed</a
+		  ></li
+		></ul
+	      ></li
+	    ><li class="src short"
+	    ><span class="keyword"
+	      >class</span
+	      > <a href="#t:Results"
+	      >Results</a
+	      > r</li
+	    ><li class="src short"
+	    ><a href="#v:results"
+	      >results</a
+	      > :: <a href="Parser-Result.html#t:Results" title="Parser.Result"
+	      >Results</a
+	      > r =&gt; <a href="Parser-Types.html#t:Parses" title="Parser.Types"
+	      >Parses</a
+	      > a -&gt; r a</li
+	    ></ul
+	  ></details
+	></div
+      ><div id="interface"
+      ><h1
+	>Documentation</h1
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:SingleResult" class="def"
+	    >SingleResult</a
+	    > a <a href="src/Parser.Result.html#SingleResult" class="link"
+	    >Source</a
+	    > <a href="#t:SingleResult" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >The result of a possibly partial parse, where only the first successful
+ parse is given, if present.</p
+	    ></div
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:SIncomplete" class="def"
+		  >SIncomplete</a
+		  ></td
+		><td class="doc"
+		><p
+		  >The result is not a valid parse, but it is a prefix of a valid parse.</p
+		  ></td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:SParsed" class="def"
+		  >SParsed</a
+		  > a</td
+		><td class="doc"
+		><p
+		  >The parse was successful, and the first successful parse is given.</p
+		  ></td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:SFailed" class="def"
+		  >SFailed</a
+		  ></td
+		><td class="doc"
+		><p
+		  >The result is not a valid parse.</p
+		  ></td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:SingleResult" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:SingleResult:Results:1"
+		      ></span
+		      > <a href="Parser-Result.html#t:Results" title="Parser.Result"
+		      >Results</a
+		      > <a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+		      >SingleResult</a
+		      ></span
+		    > <a href="src/Parser.Result.html#line-44" class="link"
+		    >Source</a
+		    > <a href="#t:SingleResult" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:SingleResult:Results:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:results"
+			  >results</a
+			  > :: <a href="Parser-Types.html#t:Parses" title="Parser.Types"
+			  >Parses</a
+			  > a -&gt; <a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+			  >SingleResult</a
+			  > a <a href="src/Parser.Result.html#results" class="link"
+			  >Source</a
+			  > <a href="#v:results" class="selflink"
+			  >#</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:SingleResult:Show:2"
+		      ></span
+		      > Show a =&gt; Show (<a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+		      >SingleResult</a
+		      > a)</span
+		    > <a href="src/Parser.Result.html#line-20" class="link"
+		    >Source</a
+		    > <a href="#t:SingleResult" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:SingleResult:Show:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+			  >SingleResult</a
+			  > a -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+			  >SingleResult</a
+			  > a -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+			  >SingleResult</a
+			  > a] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >data</span
+	    > <a id="t:ListResult" class="def"
+	    >ListResult</a
+	    > a <a href="src/Parser.Result.html#ListResult" class="link"
+	    >Source</a
+	    > <a href="#t:ListResult" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >The result of a possibly partial parse, where every successful parse is
+ given, if present.</p
+	    ></div
+	  ><div class="subs constructors"
+	  ><p class="caption"
+	    >Constructors</p
+	    ><table
+	    ><tr
+	      ><td class="src"
+		><a id="v:LIncomplete" class="def"
+		  >LIncomplete</a
+		  ></td
+		><td class="doc"
+		><p
+		  >The result is not a valid parse, but it is a prefix of a valid parse.</p
+		  ></td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:LParsed" class="def"
+		  >LParsed</a
+		  > [a]</td
+		><td class="doc"
+		><p
+		  >The parse was successful, and every successful parse is given in a
+ list.</p
+		  ></td
+		></tr
+	      ><tr
+	      ><td class="src"
+		><a id="v:LFailed" class="def"
+		  >LFailed</a
+		  ></td
+		><td class="doc"
+		><p
+		  >The result is not a valid parse.</p
+		  ></td
+		></tr
+	      ></table
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:ListResult" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ListResult:Results:1"
+		      ></span
+		      > <a href="Parser-Result.html#t:Results" title="Parser.Result"
+		      >Results</a
+		      > <a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+		      >ListResult</a
+		      ></span
+		    > <a href="src/Parser.Result.html#line-38" class="link"
+		    >Source</a
+		    > <a href="#t:ListResult" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:ListResult:Results:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:results"
+			  >results</a
+			  > :: <a href="Parser-Types.html#t:Parses" title="Parser.Types"
+			  >Parses</a
+			  > a -&gt; <a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+			  >ListResult</a
+			  > a <a href="src/Parser.Result.html#results" class="link"
+			  >Source</a
+			  > <a href="#v:results" class="selflink"
+			  >#</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:id:ListResult:Show:2"
+		      ></span
+		      > Show a =&gt; Show (<a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+		      >ListResult</a
+		      > a)</span
+		    > <a href="src/Parser.Result.html#line-31" class="link"
+		    >Source</a
+		    > <a href="#t:ListResult" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:id:ListResult:Show:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:showsPrec"
+			  >showsPrec</a
+			  > :: Int -&gt; <a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+			  >ListResult</a
+			  > a -&gt; ShowS</p
+			><p class="src"
+			><a href="#v:show"
+			  >show</a
+			  > :: <a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+			  >ListResult</a
+			  > a -&gt; String</p
+			><p class="src"
+			><a href="#v:showList"
+			  >showList</a
+			  > :: [<a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+			  >ListResult</a
+			  > a] -&gt; ShowS</p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><span class="keyword"
+	    >class</span
+	    > <a id="t:Results" class="def"
+	    >Results</a
+	    > r <a href="src/Parser.Result.html#Results" class="link"
+	    >Source</a
+	    > <a href="#t:Results" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >A typeclass for all the ways to receive the result of a partial parse.</p
+	    ></div
+	  ><div class="subs minimal"
+	  ><p class="caption"
+	    >Minimal complete definition</p
+	    ><p class="src"
+	    ><a href="Parser-Result.html#v:results" title="Parser.Result"
+	      >results</a
+	      ></p
+	    ></div
+	  ><div class="subs instances"
+	  ><details id="i:Results" open="open"
+	    ><summary
+	      >Instances</summary
+	      ><table
+	      ><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:ic:Results:Results:1"
+		      ></span
+		      > <a href="Parser-Result.html#t:Results" title="Parser.Result"
+		      >Results</a
+		      > <a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+		      >ListResult</a
+		      ></span
+		    > <a href="src/Parser.Result.html#line-38" class="link"
+		    >Source</a
+		    > <a href="#t:Results" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:ic:Results:Results:1"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:results"
+			  >results</a
+			  > :: <a href="Parser-Types.html#t:Parses" title="Parser.Types"
+			  >Parses</a
+			  > a -&gt; <a href="Parser-Result.html#t:ListResult" title="Parser.Result"
+			  >ListResult</a
+			  > a <a href="src/Parser.Result.html#results" class="link"
+			  >Source</a
+			  > <a href="#v:results" class="selflink"
+			  >#</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		><tr
+		><td class="src clearfix"
+		  ><span class="inst-left"
+		    ><span class="instance details-toggle-control details-toggle" data-details-id="i:ic:Results:Results:2"
+		      ></span
+		      > <a href="Parser-Result.html#t:Results" title="Parser.Result"
+		      >Results</a
+		      > <a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+		      >SingleResult</a
+		      ></span
+		    > <a href="src/Parser.Result.html#line-44" class="link"
+		    >Source</a
+		    > <a href="#t:Results" class="selflink"
+		    >#</a
+		    ></td
+		  ><td class="doc empty"
+		  >&nbsp;</td
+		  ></tr
+		><tr
+		><td colspan="2"
+		  ><details id="i:ic:Results:Results:2"
+		    ><summary class="hide-when-js-enabled"
+		      >Instance details</summary
+		      ><div class="subs methods"
+		      ><p class="caption"
+			>Methods</p
+			><p class="src"
+			><a href="#v:results"
+			  >results</a
+			  > :: <a href="Parser-Types.html#t:Parses" title="Parser.Types"
+			  >Parses</a
+			  > a -&gt; <a href="Parser-Result.html#t:SingleResult" title="Parser.Result"
+			  >SingleResult</a
+			  > a <a href="src/Parser.Result.html#results" class="link"
+			  >Source</a
+			  > <a href="#v:results" class="selflink"
+			  >#</a
+			  ></p
+			></div
+		      ></details
+		    ></td
+		  ></tr
+		></table
+	      ></details
+	    ></div
+	  ></div
+	><div class="top"
+	><p class="src"
+	  ><a id="v:results" class="def"
+	    >results</a
+	    > :: <a href="Parser-Result.html#t:Results" title="Parser.Result"
+	    >Results</a
+	    > r =&gt; <a href="Parser-Types.html#t:Parses" title="Parser.Types"
+	    >Parses</a
+	    > a -&gt; r a <a href="src/Parser.Result.html#results" class="link"
+	    >Source</a
+	    > <a href="#v:results" class="selflink"
+	    >#</a
+	    ></p
+	  ><div class="doc"
+	  ><p
+	    >Produce a result of a partial parse.</p
+	    ></div
+	  ></div
+	></div
+      ></div
+    ><div id="footer"
+    ><p
+      >Produced by <a href="http://www.haskell.org/haddock/"
+	>Haddock</a
+	> version 2.19.0</p
+      ></div
+    ></body
+  ></html
+>
