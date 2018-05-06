@@ -1,0 +1,13 @@
+i = 0;
+
+while i < $ do {
+  var j = 1;
+  var output = 1;
+  # Get the factorial of $[i].
+  while j <= $[i] do {
+    output *= j;
+    j += 1;
+  }
+  $[i] = output;
+  i += 1;
+}
